@@ -1,0 +1,36 @@
+/* The shared cell selector has several :not() clauses; override its section frame. */
+.story-page main>section.family-generations,
+.story-page main>section.family-history,
+.story-page main>section.family-today,
+.story-page main>section.family-leadership{border:0!important;border-radius:0!important}
+.story-page main>section.family-generations,
+.story-page main>section.family-history{max-width:1120px;margin:0 auto!important}
+.story-page main>section.family-today,
+.story-page main>section.family-leadership{margin:0!important}
+.story-page .family-generations{padding:80px 45px 60px}
+.story-page .family-history{position:relative;padding:8px 45px 105px;background:transparent}
+.story-page .family-history::before{content:"";position:absolute;top:18px;bottom:128px;left:45px;width:1px;background:#d9cabe}
+.story-page .family-history article{position:relative;display:grid;grid-template-columns:230px minmax(0,1fr);gap:55px;padding:54px 0 58px 42px;border:0;border-radius:0;background:transparent;overflow:visible}
+.story-page .family-history article::before{content:"";position:absolute;top:78px;left:-6px;width:13px;height:13px;border:2px solid #9a2b18;border-radius:50%;background:#9a2b18;box-shadow:0 0 0 6px #fcfaf7}
+.story-page .family-history article+article{border-top:0}
+.story-page .family-history .history-date{font-weight:500}
+.story-page .family-history article>div:last-child{max-width:690px}
+.story-page .family-history article>div:last-child h2{margin-top:4px}
+.story-page .family-today{border-radius:0}
+@media (prefers-reduced-motion:no-preference){
+  .story-timeline-ready .family-history article:not(.is-visible) .history-date,
+  .story-timeline-ready .family-history article:not(.is-visible)>div:last-child{opacity:0;transform:translateY(20px)}
+  .story-timeline-ready .family-history article:not(.is-visible)::before{opacity:.35;transform:scale(.65)}
+  .story-timeline-ready .family-history .history-date,
+  .story-timeline-ready .family-history article>div:last-child{transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
+  .story-timeline-ready .family-history article>div:last-child{transition-delay:.12s}
+  .story-timeline-ready .family-history article::before{transition:opacity .45s ease,transform .45s ease}
+}
+@media (max-width:760px){
+  .story-page .family-generations{padding:55px 7%}
+  .story-page .family-history{padding:0 7% 65px}
+  .story-page .family-history::before{left:7%;top:10px;bottom:80px}
+  .story-page .family-history article{grid-template-columns:1fr;gap:18px;padding:38px 0 44px 30px}
+  .story-page .family-history article::before{top:59px;left:-6px}
+  .story-page .family-history .history-date{font-size:3rem;flex-wrap:wrap;gap:10px 20px}
+}

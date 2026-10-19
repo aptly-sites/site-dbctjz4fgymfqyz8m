@@ -1,0 +1,246 @@
+{
+  "source": "Columbus Consolidated Government GIS school facilities layer",
+  "sourceUrl": "https://ccggisprod.columbusga.org/server/rest/services/Base/MapServer/21",
+  "sourceQuery": "https://ccggisprod.columbusga.org/server/rest/services/Base/MapServer/21/query?where=1%3D1&outFields=NAME%2CADDRESS%2CLOW_GRADE%2CHIGH_GRADE%2CPLAN_TYPE&returnGeometry=true&outSR=4326&f=geojson",
+  "compiledOn": "2026-10-19",
+  "center": [
+    32.478,
+    -84.958
+  ],
+  "radiusMiles": 2.5,
+  "scope": "neighborhood",
+  "guideName": "MidTown",
+  "schools": [
+    {
+      "name": "Columbus High",
+      "type": "School facility",
+      "grades": "9–12",
+      "address": "1700 Cherokee Ave, Columbus, GA",
+      "distance": 0.32,
+      "coordinates": [
+        32.47939404048306,
+        -84.96330192329826
+      ]
+    },
+    {
+      "name": "Wynnton Arts Academy",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "2303 Wynnton Rd, Columbus, GA",
+      "distance": 0.48,
+      "coordinates": [
+        32.47112796871107,
+        -84.95872764359135
+      ]
+    },
+    {
+      "name": "St. Elmo Center For The Gifted-Alt",
+      "type": "School facility",
+      "grades": "1–5",
+      "address": "2101 18Th Ave, Columbus, GA",
+      "distance": 0.61,
+      "coordinates": [
+        32.48306727401826,
+        -84.96664882019266
+      ]
+    },
+    {
+      "name": "Rigdon Road Elementary",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "1320 Rigdon Rd, Columbus, GA",
+      "distance": 0.78,
+      "coordinates": [
+        32.47355184186559,
+        -84.94578801777124
+      ]
+    },
+    {
+      "name": "Rainey McCullers School Of The Arts",
+      "type": "School facility",
+      "grades": "9–12",
+      "address": "1700 Midtown Dr, Columbus, GA",
+      "distance": 0.83,
+      "coordinates": [
+        32.47520231427,
+        -84.94410460906349
+      ]
+    },
+    {
+      "name": "Hannan Elementary Magnet Academy",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "1338 Talbotton Rd, Columbus, GA",
+      "distance": 1.07,
+      "coordinates": [
+        32.48720276311625,
+        -84.97266894233766
+      ]
+    },
+    {
+      "name": "Clubview Elementary",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "2836 Edgewood Rd, Columbus, GA",
+      "distance": 1.14,
+      "coordinates": [
+        32.49271625959355,
+        -84.94901673537677
+      ]
+    },
+    {
+      "name": "Richards Middle",
+      "type": "School facility",
+      "grades": "6–8",
+      "address": "2892 Edgewood Rd, Columbus, GA",
+      "distance": 1.18,
+      "coordinates": [
+        32.49234133119205,
+        -84.94696198359104
+      ]
+    },
+    {
+      "name": "Jordan High",
+      "type": "School facility",
+      "grades": "9–12",
+      "address": "3200 Howard Ave, Columbus, GA",
+      "distance": 1.37,
+      "coordinates": [
+        32.49457057891246,
+        -84.97085400733128
+      ]
+    },
+    {
+      "name": "Carver High",
+      "type": "School facility",
+      "grades": "9–12",
+      "address": "3100 8Th St, Columbus, GA",
+      "distance": 1.47,
+      "coordinates": [
+        32.45958123652561,
+        -84.94553814908008
+      ]
+    },
+    {
+      "name": "Hardaway High",
+      "type": "School facility",
+      "grades": "9–12",
+      "address": "2901 College Dr, Columbus, GA",
+      "distance": 1.49,
+      "coordinates": [
+        32.4979148673257,
+        -84.94816646176625
+      ]
+    },
+    {
+      "name": "Davis Elementary",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "1822 Shepherd Dr, Columbus, GA",
+      "distance": 1.5,
+      "coordinates": [
+        32.45724690838071,
+        -84.9656835354533
+      ]
+    },
+    {
+      "name": "Marshall Success Center",
+      "type": "School facility",
+      "grades": "3–12",
+      "address": "1830 Shepherd Drive, Columbus, GA",
+      "distance": 1.51,
+      "coordinates": [
+        32.45676816909889,
+        -84.96440491678578
+      ]
+    },
+    {
+      "name": "Woodall Center-Alt",
+      "type": "School facility",
+      "grades": "K–8",
+      "address": "1822 Shepherd Dr, Columbus, GA",
+      "distance": 1.53,
+      "coordinates": [
+        32.45710004200258,
+        -84.96654507869356
+      ]
+    },
+    {
+      "name": "Johnson Elementary",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "3700 Woodlawn Ave, Columbus, GA",
+      "distance": 1.54,
+      "coordinates": [
+        32.49829617115752,
+        -84.9687156022123
+      ]
+    },
+    {
+      "name": "Brewer Early Innovation Academy",
+      "type": "School facility",
+      "grades": "K–2",
+      "address": "2951 Martin Luther King Jr Blvd, Columbus, GA",
+      "distance": 1.64,
+      "coordinates": [
+        32.4557511518286,
+        -84.94821462023731
+      ]
+    },
+    {
+      "name": "Downtown Elementary Magnet Academy",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "1400 1St Ave, Columbus, GA",
+      "distance": 1.96,
+      "coordinates": [
+        32.4730698008244,
+        -84.99116989645972
+      ]
+    },
+    {
+      "name": "Fox Elementary",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "600 38Th St, Columbus, GA",
+      "distance": 2.06,
+      "coordinates": [
+        32.49772134518084,
+        -84.98456542589342
+      ]
+    },
+    {
+      "name": "Martin Luther King Jr. Elementary",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "350 30Th Ave, Columbus, GA",
+      "distance": 2.38,
+      "coordinates": [
+        32.44454241685789,
+        -84.94841682715422
+      ]
+    },
+    {
+      "name": "Lonnie Jackson Academy",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "4601 Buena Vista Rd, Columbus, GA",
+      "distance": 2.44,
+      "coordinates": [
+        32.467888447606434,
+        -84.91794578014225
+      ]
+    },
+    {
+      "name": "Gentian Elementary",
+      "type": "School facility",
+      "grades": "K–5",
+      "address": "4201 Primrose Rd, Columbus, GA",
+      "distance": 2.47,
+      "coordinates": [
+        32.503481216153105,
+        -84.92825807602973
+      ]
+    }
+  ]
+}

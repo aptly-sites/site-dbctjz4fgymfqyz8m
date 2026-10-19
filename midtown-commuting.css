@@ -1,0 +1,6 @@
+.commute-immersive .commute-hero{background:linear-gradient(90deg,rgba(18,32,27,.84),rgba(18,32,27,.30) 80%),url("assets/midtown-hero.webp") center 52%/cover}
+.commute-immersive .commute-hero .eyebrow{color:#fff}
+.midtown-commute-note{margin-top:22px;color:#575c62;font-size:14px}
+.commute-page .card a{display:inline-block;margin-top:12px;color:#9a2b18;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.commute-page td a{color:#9a2b18;font-weight:700}
+@media(max-width:650px){.commute-immersive .commute-hero{background-image:linear-gradient(90deg,rgba(18,32,27,.88),rgba(18,32,27,.57)),url("assets/midtown-hero.webp");background-position:61% center}}

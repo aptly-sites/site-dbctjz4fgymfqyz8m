@@ -1,0 +1,15 @@
+.site-breadcrumb{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:15px max(5%,24px);color:#59615d;background:#f6f3ee;font-size:12px;line-height:1.5}
+.site-breadcrumb ol{display:flex;align-items:center;gap:9px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
+.site-breadcrumb li{margin:0;padding:0}
+.site-breadcrumb li+li::before{content:"›";display:inline-block;margin-right:9px;color:#8b938e}
+.site-breadcrumb a{color:#9a2b18;text-decoration:none}
+.site-breadcrumb a:hover,.site-breadcrumb a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.site-breadcrumb [aria-current=page]{color:#263c32;font-weight:600}
+.breadcrumb-return{margin-left:auto;white-space:nowrap}
+.breadcrumb-return[hidden]{display:none!important}
+.experience-page main{position:relative}
+.experience-page .site-breadcrumb{position:absolute;top:92px;left:0;right:0;z-index:5;background:transparent;color:#fff}
+.experience-page .site-breadcrumb a,.experience-page .site-breadcrumb [aria-current=page]{color:#fff}
+.experience-page .site-breadcrumb li+li::before{color:#ffffffb8}
+.neighborhood-breadcrumb .breadcrumb-return,.listing-breadcrumb .breadcrumb-return{margin-left:auto}
+@media(max-width:650px){.site-breadcrumb{padding:12px 20px}.breadcrumb-return{margin-left:0}.experience-page .site-breadcrumb{top:78px}}

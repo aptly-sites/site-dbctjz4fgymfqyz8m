@@ -1,0 +1,16 @@
+.contact-immersive .site-header{position:absolute;top:0;left:0;width:100%;z-index:100;background:rgba(20,35,30,.38);backdrop-filter:blur(10px);border-bottom:1px solid #ffffff45}
+.contact-immersive .site-header .brand img{filter:brightness(0) invert(1)}
+.contact-immersive .site-header a,.contact-immersive .site-header .menu{color:#fff;border-color:#ffffff9c}
+.contact-immersive .site-header nav a:hover,.contact-immersive .site-header nav a[aria-current=page]{color:#fff;text-decoration:underline;text-underline-offset:5px}
+.contact-immersive main>.contact-hero{position:relative;display:flex;align-items:flex-end;min-height:640px;padding:160px 7.5% 90px;margin:0!important;border:0!important;border-radius:0!important;background:linear-gradient(90deg,rgba(13,25,22,.83) 0%,rgba(13,25,22,.63) 35%,rgba(13,25,22,.08) 80%),url('assets/contact-office-door.jpg') center center/cover;color:#fff}
+.contact-hero-content{position:relative;z-index:1;max-width:690px}
+.contact-breadcrumb{display:flex;align-items:center;gap:11px;margin-bottom:66px;font-size:12px;letter-spacing:.02em;color:#fff}
+.contact-breadcrumb a{color:#fff}
+.contact-hero .eyebrow,.contact-hero .intro{color:#fff}
+.contact-hero .eyebrow{margin-bottom:14px}
+.contact-hero h1{max-width:650px;margin-bottom:20px;font-size:clamp(42px,5vw,76px)}
+.contact-hero .intro{max-width:570px;margin-bottom:0}
+.contact-illustrative{position:absolute;right:24px;bottom:17px;font-size:11px;color:#fff;background:#15251ab8;padding:4px 8px;border-radius:4px}
+#departments{scroll-margin-top:24px}
+@media(max-width:1050px){.contact-immersive .site-header nav{background:#faf9f6}.contact-immersive .site-header nav a{color:#161922!important}.contact-immersive .site-header .menu{color:#fff}}
+@media(max-width:700px){.contact-immersive main>.contact-hero{min-height:600px;padding:145px 6% 76px;background-image:linear-gradient(180deg,rgba(13,25,22,.68),rgba(13,25,22,.58) 58%,rgba(13,25,22,.75)),url('assets/contact-office-door.jpg');background-position:55% center}.contact-breadcrumb{margin-bottom:85px}.contact-hero h1{font-size:clamp(42px,10vw,58px)}.contact-hero .intro{font-size:15px}.contact-illustrative{right:12px;bottom:10px}}

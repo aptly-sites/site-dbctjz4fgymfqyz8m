@@ -1,0 +1,21 @@
+/* Shared full-bleed header treatment for neighborhood drill-down pages. */
+.neighborhood-subpage-immersive .review-bar{display:none}
+.neighborhood-subpage-immersive .site-header{position:fixed;top:0;left:0;width:100%;z-index:1100;background:rgba(21,35,43,.28);color:#fff;backdrop-filter:blur(10px);border-bottom:1px solid #ffffff30;transition:background .2s,color .2s}
+.neighborhood-subpage-immersive .site-header:not(.is-scrolled) a,.neighborhood-subpage-immersive .site-header:not(.is-scrolled) .menu{color:#fff;border-color:#ffffff70}
+.neighborhood-subpage-immersive .site-header:not(.is-scrolled) .brand img{filter:brightness(0) invert(1)}
+.neighborhood-subpage-immersive .site-header.is-scrolled{background:rgba(250,249,246,.97);color:#181d25;box-shadow:0 3px 24px #16192212}
+.neighborhood-subpage-immersive .site-header.is-scrolled .brand img{filter:none}
+.neighborhood-subpage-immersive main{padding-top:0}
+.neighborhood-subpage-immersive main>.neighborhood-breadcrumb{position:absolute;top:105px;left:0;right:0;z-index:2;background:transparent;color:#fff;padding:18px 6vw}
+.neighborhood-subpage-immersive main>.neighborhood-breadcrumb a,.neighborhood-subpage-immersive main>.neighborhood-breadcrumb [aria-current=page]{color:#fff}
+.neighborhood-subpage-immersive main>section.lake-dining-hero,.neighborhood-subpage-immersive main>section.dining-hero,.neighborhood-subpage-immersive main>section.activities-intro{margin:0!important;border:0!important;border-radius:0!important;width:100%;min-height:640px;padding:190px 6vw 80px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;background:linear-gradient(90deg,rgba(15,30,25,.82),rgba(15,30,25,.27) 82%),var(--subpage-hero) center/cover;color:#fff}
+.neighborhood-subpage-immersive main>section.dining-hero>div{max-width:800px}
+.neighborhood-subpage-immersive main>section.dining-hero img{display:none}
+.neighborhood-subpage-immersive main>section.activities-intro{min-height:700px}
+.neighborhood-subpage-immersive main>section.activities-intro h1,.neighborhood-subpage-immersive main>section.dining-hero h1,.neighborhood-subpage-immersive main>section.lake-dining-hero h1{color:#fff}
+.neighborhood-subpage-immersive main>section.activities-intro p,.neighborhood-subpage-immersive main>section.dining-hero p,.neighborhood-subpage-immersive main>section.lake-dining-hero p{color:#fff}
+.neighborhood-subpage-immersive main>section.activities-intro>p:not(.eyebrow),.neighborhood-subpage-immersive main>section.dining-hero p{max-width:760px}
+.neighborhood-subpage-immersive .activity-categories a{background:#14271f9c;border-color:#ffffff85;color:#fff;backdrop-filter:blur(4px)}
+.neighborhood-subpage-immersive .activity-categories a:hover,.neighborhood-subpage-immersive .activity-categories a:focus-visible{background:#fff;color:#263c32}
+@media(max-width:1200px){.neighborhood-subpage-immersive .site-header nav{background:#faf9f6}.neighborhood-subpage-immersive .site-header nav a{color:#161922!important}}
+@media(max-width:650px){.neighborhood-subpage-immersive main>.neighborhood-breadcrumb{top:86px;padding:14px 6vw}.neighborhood-subpage-immersive main>section.lake-dining-hero,.neighborhood-subpage-immersive main>section.dining-hero,.neighborhood-subpage-immersive main>section.activities-intro{min-height:640px;padding:170px 6vw 65px;background-position:center,60% center}.neighborhood-subpage-immersive main>section.activities-intro{min-height:760px}.neighborhood-subpage-immersive .activity-categories{gap:8px}.neighborhood-subpage-immersive .activity-categories a{padding:9px 12px}}

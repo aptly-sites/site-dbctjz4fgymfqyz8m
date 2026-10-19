@@ -1,0 +1,52 @@
+/* Shared content surfaces, based on the rental listing cards. */
+:root{--cell-radius:18px;--cell-border:#e5e1db;--cell-surface:#fff}
+body{background:#f3f1ed}
+main>section:not(.hero):not(.experience-hero):not(.family-hero):not(.rental-search):not(.rentals-heading):not(.page-top):not(.city-hero):not(.neighborhood-hero){margin:24px clamp(16px,3vw,48px);border-radius:var(--cell-radius);border:1px solid var(--cell-border)}
+main>section.section,main>section.guide-section,main>section.neighborhood-section{background:var(--cell-surface)}
+.feature-cards article,.step-grid>div,.step-grid article,.department-grid>div,.department-grid article,.neighborhood-grid article,.dining-grid article,.move-steps>li,.quality-card,.pricing-details,.availability-box,.family-history article,.experience-explore article{border-radius:var(--cell-radius);border:1px solid var(--cell-border);overflow:hidden}
+.feature-cards article,.step-grid>div,.step-grid article,.department-grid>div,.department-grid article,.move-steps>li{background:#fff;padding:28px}
+.family-archive img,.archive-portraits img,.experience-photo img,.quality-image img,.community img,.guide-outdoors img,.family-leadership img{border-radius:var(--cell-radius)}
+.faq details,.neighborhood-faq details{padding:22px 25px;margin:12px 0;background:#f6f5f2;border:1px solid var(--cell-border);border-radius:14px}
+main>section.resident,main>section.experience-leasing,main>section.city-end{background:#263c32}
+.affordability-panel{padding:26px 32px;background:white;display:grid;grid-template-columns:1fr 1.25fr;gap:30px;align-items:start}.affordability-panel h2{font-size:27px;letter-spacing:-.03em;margin:8px 0 12px}.affordability-panel p{font-size:13px;line-height:1.75;color:#575c62}.affordability-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.affordability-form label{font-size:12px;font-weight:600;display:grid;gap:8px}.affordability-form input,.affordability-form select{width:100%;min-width:0;padding:13px;border:1px solid #d8d4cd;border-radius:9px;background:white;font:inherit}.affordability-form button{border-radius:9px;min-height:44px;border:0;padding:12px;background:#9a2b18;color:white;font:inherit;cursor:pointer}.affordability-form button:disabled{background:#eeeae4;color:#666;cursor:default}.affordability-status,.affordability-note{grid-column:1/-1}.affordability-status{margin:0;font-size:14px}.affordability-panel a{color:#9a2b18}.affordability-results{grid-column:1/-1}.affordability-results .rental-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media(max-width:700px){main>section:not(.hero):not(.experience-hero):not(.family-hero):not(.rental-search):not(.rentals-heading):not(.page-top):not(.city-hero):not(.neighborhood-hero){margin:16px 12px}.affordability-panel{padding:24px;grid-template-columns:1fr;gap:16px}.affordability-form{grid-template-columns:1fr}.affordability-results .rental-cards{grid-template-columns:1fr}}
+.rental-filters{border-radius:18px;border:1px solid var(--cell-border)}.rental-filters input,.rental-filters select{border-radius:9px}.button{border-radius:9px}
+main>section.renter-benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border:0;background:none;padding:0;margin-top:36px;margin-bottom:40px}.renter-benefits article{background:white;border:1px solid #e5e1db;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}.renter-benefits article>img{width:100%;height:245px;object-fit:cover}.renter-benefits article>div{padding:28px;display:flex;flex-direction:column;flex:1}.renter-benefits h2{font-size:32px;letter-spacing:-.035em;margin:6px 0 16px}.renter-benefits p:not(.eyebrow){font-size:15px;line-height:1.75;color:#575c62;margin:0 0 22px}.renter-benefits .eyebrow{font-size:10px;letter-spacing:.13em;color:#9a2b18}.renter-benefits a{color:#9a2b18;font-size:13px;font-weight:700;margin-top:auto}.renter-benefits small{font-size:11px;line-height:1.5;color:#666;margin-top:14px}.neighborhood-label{background:none;border:0}.neighborhood-pill{display:flex;align-items:center;justify-content:center;height:36px;white-space:nowrap;background:#263c32;color:#fff!important;border:2px solid #fff;border-radius:999px;box-shadow:0 3px 10px #0003;padding:0 12px;font:600 12px Montserrat,sans-serif;text-decoration:none!important}.neighborhood-pill:hover,.neighborhood-pill:focus-visible{background:#9a2b18;outline:2px solid #9a2b18;outline-offset:2px}.discovery-links{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:none;overflow:visible}.discovery-links>a{min-height:130px;border-radius:14px;border:0;display:flex;align-items:flex-end;padding:18px;font-size:14px;font-weight:700;line-height:1.4;background:linear-gradient(0deg,#14291de8,#14291d25),url('assets/92baf56e-columbus-georgia-rental-scaled.jpg') center/cover}.discovery-links>a:first-child{background-image:linear-gradient(0deg,#14291de8,#14291d25),url('assets/user-riverwalk-reference.png')}.discovery-links>a:nth-child(3),.discovery-links>a:nth-child(5){background-image:linear-gradient(0deg,#14291de8,#14291d25),url('assets/8f85d814-columbus-ga-road-scaled.jpg')}.discovery-links>a:last-child{grid-column:1/-1;min-height:52px;align-items:center;background:#9a2b18}.discovery-links>a:hover{box-shadow:0 0 0 3px #9a2b18;background-color:#263c32}.discovery-links>a span{margin-left:auto}.discovery-layout .neighborhood-map{height:490px}.neighborhood-discovery .discovery-heading h2{margin-top:16px}.discovery-links::after{content:'Columbus lifestyle imagery; photos are illustrative of the area.';grid-column:1/-1;font-size:10px;color:#575c62;line-height:1.5}
+@media(max-width:850px){main>section.renter-benefits{gap:16px}.renter-benefits article>div{padding:22px}.renter-benefits h2{font-size:26px}.renter-benefits article>img{height:200px}}@media(max-width:650px){main>section.renter-benefits{grid-template-columns:1fr}.renter-benefits article>img{height:230px}.discovery-layout .neighborhood-map{height:460px}.neighborhood-pill{font-size:10px;padding:0 7px}.discovery-links>a{min-height:120px}}
+
+/* Each guide tile uses a documented photo of the named Columbus area or its immediate MidTown vicinity. */
+.discovery-links>a:first-child{background-image:linear-gradient(0deg,#14291de8,#14291d25),url('assets/uptown-riverfront-dusk.webp')}
+.discovery-links>a:nth-child(2){background-image:linear-gradient(0deg,#14291de8,#14291d25),url('assets/neighborhood-midtown.jpg')}
+.discovery-links>a:nth-child(3){background-image:linear-gradient(0deg,#14291de8,#14291d25),url('assets/neighborhood-lake-bottom.jpg')}
+.discovery-links>a:nth-child(4){background-image:linear-gradient(0deg,#14291de8,#14291d25),url('assets/neighborhood-hilton-woods.jpg');background-position:center 35%}
+.discovery-links>a:nth-child(5){background-image:linear-gradient(0deg,#14291de8,#14291d25),url('assets/neighborhood-east-highlands.jpg')}
+.discovery-links::after{content:'Photos: Columbus riverfront, MidTown, Lakebottom Park and neighborhood-area homes.'}
+
+/* Keep neighborhood photography visible on hover; zoom the image layer only. */
+.discovery-links>a:not(:last-child){position:relative;isolation:isolate;overflow:hidden;background:transparent!important;transition:box-shadow .25s ease}
+.discovery-links>a:not(:last-child)::before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--neighborhood-image);background-position:var(--neighborhood-position,center);background-size:cover;transition:transform .4s ease}
+.discovery-links>a:not(:last-child)::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(20,41,29,.84),rgba(20,41,29,.12));pointer-events:none}
+.discovery-links>a:not(:last-child):hover::before,.discovery-links>a:not(:last-child):focus-visible::before{transform:scale(1.07)}
+.discovery-links>a:not(:last-child):hover{box-shadow:none!important}
+.discovery-links>a:not(:last-child):focus-visible{box-shadow:none!important;outline:3px solid #9a2b18;outline-offset:3px}
+.discovery-links>a:first-child{--neighborhood-image:url('assets/uptown-riverfront-dusk.webp')}
+.discovery-links>a:nth-child(2){--neighborhood-image:url('assets/neighborhood-midtown.jpg')}
+.discovery-links>a:nth-child(3){--neighborhood-image:url('assets/neighborhood-lake-bottom.jpg')}
+.discovery-links>a:nth-child(4){--neighborhood-image:url('assets/neighborhood-hilton-woods.jpg');--neighborhood-position:center 35%}
+.discovery-links>a:nth-child(5){--neighborhood-image:url('assets/neighborhood-east-highlands.jpg')}
+
+/* Dark cells must carry their own foreground colors; the global body and paragraph
+   colors are intended for light surfaces. */
+main>section.resident,main>section.city-end{color:#fff}
+main>section.resident h2,main>section.resident p:not(.eyebrow),main>section.resident a,
+main>section.city-end h2,main>section.city-end p:not(.eyebrow){color:#fff}
+main>section.resident .eyebrow,main>section.city-end .eyebrow{color:#f4c7ad}
+main>section.resident a:hover,main>section.resident a:focus-visible{color:#f4c7ad}
+
+/* Keep pricing copy in the large section instead of clipping it inside a second card. */
+main>section.experience-pricing .pricing-details{min-width:0;padding:0;border:0;border-radius:0;overflow:visible;background:transparent}
+main>section.experience-pricing .pricing-details article{display:grid;grid-template-columns:26px minmax(0,1fr);gap:16px;padding:22px 0}
+main>section.experience-pricing .pricing-details article>span{padding-top:5px}
+main>section.experience-pricing .pricing-details .fine{margin-top:14px}
+/* Content navigation must not inherit the mobile header-menu positioning. */
+main nav{position:static;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;box-shadow:none;top:auto;left:auto;right:auto;background:transparent}

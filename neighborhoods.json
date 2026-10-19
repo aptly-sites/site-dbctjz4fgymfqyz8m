@@ -1,0 +1,80 @@
+[
+  {
+    "slug": "uptown",
+    "name": "Uptown",
+    "center": [
+      32.465,
+      -84.993
+    ],
+    "radius": 1.5,
+    "kicker": "RIVERFRONT DAYS. DOWNTOWN EVENINGS.",
+    "headline": "Life by the River.",
+    "intro": "Uptown is Columbus’s downtown district, centered on Broadway and the Chattahoochee riverfront. It combines dining, arts venues and outdoor destinations in a compact part of the city."
+  },
+  {
+    "slug": "midtown",
+    "name": "MidTown",
+    "center": [
+      32.478,
+      -84.958
+    ],
+    "radius": 2,
+    "kicker": "MANY NEIGHBORHOODS. EVERYDAY CONNECTIONS.",
+    "headline": "Find Your Corner of MidTown.",
+    "intro": "MidTown is a broad Columbus district made up of smaller neighborhoods, historic streets, parks and shopping areas. It is a useful starting point if you want to compare several different residential settings within the city."
+  },
+  {
+    "slug": "lake-bottom",
+    "name": "Lake Bottom",
+    "center": [
+      32.478,
+      -84.967
+    ],
+    "radius": 1,
+    "kicker": "A PARK AT THE HEART OF YOUR ROUTINE.",
+    "headline": "Make Room for Park Days.",
+    "intro": "Lake Bottom, also written Lakebottom, commonly refers to the area around Weracoba/Lakebottom Park in MidTown Columbus. Nearby Weracoba–St. Elmo has a historic residential character, with several early twentieth-century architectural styles."
+  },
+  {
+    "slug": "hilton-woods",
+    "name": "Hilton Woods/Hilton Heights",
+    "center": [
+      32.494,
+      -84.942
+    ],
+    "radius": 1,
+    "searchAreas": [
+      {
+        "name": "Hilton Woods",
+        "center": [
+          32.494,
+          -84.942
+        ],
+        "radius": 1
+      },
+      {
+        "name": "Hilton Heights",
+        "center": [
+          32.496,
+          -84.946
+        ],
+        "radius": 1
+      }
+    ],
+    "kicker": "ESTABLISHED STREETS. A FRESH START.",
+    "headline": "Explore Hilton Woods and Hilton Heights.",
+    "intro": "Hilton Woods and Hilton Heights are neighboring MidTown residential areas often discussed together. Explore established streets, ranch-style homes and convenient routes to Columbus State University, shopping and local services."
+  },
+  {
+    "slug": "east-highlands",
+    "name": "East Highlands",
+    "center": [
+      32.482,
+      -84.977
+    ],
+    "radius": 1,
+    "kicker": "HISTORIC STREETS. CITY CONNECTIONS.",
+    "headline": "Explore East Highlands.",
+    "intro": "East Highlands sits in MidTown’s northwest corner, south of Talbotton Road and the Fall Line Trace. Its streets include houses from different building periods, rather than one single architectural era."
+  }
+]

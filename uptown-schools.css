@@ -1,0 +1,6 @@
+#schools .school-resource-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:12px}
+#schools .school-resource-links a{font-size:13px;font-weight:600}
+#schools .school-attribution{padding:14px 0 4px}
+#schools .school-attribution p{font-size:11px;line-height:1.65}
+#schools .school-marker{width:26px;height:26px;font-size:10px;box-shadow:0 3px 9px #10271b55}
+#schools .school-list li{scroll-margin-top:110px}

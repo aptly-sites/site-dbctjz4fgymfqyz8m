@@ -1,0 +1,5 @@
+.commute-immersive .commute-hero{background:linear-gradient(90deg,rgba(18,32,27,.86),rgba(18,32,27,.36) 80%),url("assets/neighborhood-east-highlands.jpg") center 58%/cover}
+.commute-immersive .commute-hero .eyebrow{color:#fff}
+.commute-page .card a{display:inline-block;margin-top:12px;color:#9a2b18;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.commute-page td a{color:#9a2b18;font-weight:700}
+@media(max-width:650px){.commute-immersive .commute-hero{background-image:linear-gradient(90deg,rgba(18,32,27,.88),rgba(18,32,27,.58)),url("assets/neighborhood-east-highlands.jpg");background-position:55% center}}
