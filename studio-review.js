@@ -13,7 +13,7 @@
  let peer=null,nonce='',review=null,role='',connected=false,pending=null,titleDraft='',textDraft='';
  try{nonce=sessionStorage.getItem('aptly-review-connection')||'';if(nonce)status.textContent='Reconnecting to the open Studio tab… You can also reconnect below.'}catch{}
  const retryKeys=new Map();
- const connect=button('Connect to Studio',()=>{nonce=crypto.randomUUID();try{sessionStorage.setItem('aptly-review-connection',nonce)}catch{}connected=false;peer=window.open(STUDIO+'/review-bridge?project='+PROJECT+'&nonce='+nonce,'aptly-studio-review','popup,width=660,height=600');status.textContent=peer?'Sign in if prompted, then return here. Keep the Studio connection tab open.':'Your browser blocked the connection window. Allow this one window or use the full Studio review link.';render()});panel.append(connect);
+ const connect=button('Connect to Studio',()=>{nonce=crypto.randomUUID();try{sessionStorage.setItem('aptly-review-connection',nonce)}catch{}connected=false;peer=window.open(STUDIO+'/review-bridge?project='+PROJECT+'&nonce='+nonce,'aptly-studio-review');status.textContent=peer?'Sign in if prompted, then return here. Keep the Studio connection tab open.':'Your browser blocked the Studio tab. Open the full Studio review link below to continue.';render()});panel.append(connect);
  const full=make('a','Open full review in Studio ↗');full.href=STUDIO+'/?project='+PROJECT+'&stage=review';full.target='_blank';full.rel='noopener noreferrer';panel.append(full);
  const body=make('div','','review-items');panel.append(body);document.body.append(panel);
  panel.addEventListener('keydown',e=>{if(e.key==='Escape'){panel.hidden=true;launch.setAttribute('aria-expanded','false');launch.focus()}});
