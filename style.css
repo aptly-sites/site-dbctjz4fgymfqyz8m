@@ -249,3 +249,6 @@ select:not([multiple]):not([size]){
 
 /* Match the footer surface to each page's body. */
 body footer{background:inherit}
+
+/* Preserve the supplied tagline lockup at a readable footer size. */
+.footer-home-link .footer-logo{width:320px;max-width:100%;height:auto;margin-bottom:20px}
