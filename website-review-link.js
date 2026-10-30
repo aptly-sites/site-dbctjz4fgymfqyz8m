@@ -1,0 +1,54 @@
+/* Private-link reviewer UI. Access is enforced by the server, never by this flag. */
+(()=>{'use strict';
+ const API='/api/website-review',fragment=new URLSearchParams(location.hash.slice(1));
+ let linkToken=fragment.get('review_token');
+ if(linkToken){fragment.delete('review_token');history.replaceState(null,'',location.pathname+location.search+(fragment.size?'#'+fragment.toString():''))}
+ try{sessionStorage.setItem('aptly-private-review-mode','1')}catch{}
+ const privacy=document.createElement('meta');privacy.name='referrer';privacy.content='no-referrer';document.head.append(privacy);
+ const css=document.createElement('link');css.rel='stylesheet';css.href='/studio-review.css';document.head.append(css);
+ const make=(tag,text)=>{const e=document.createElement(tag);if(text)e.textContent=text;return e};
+ const button=(text,fn)=>{const e=make('button',text);e.type='button';e.addEventListener('click',fn);return e};
+ const toggle=button('Review this website',()=>{panel.hidden=false;toggle.setAttribute('aria-expanded','true');close.focus()});toggle.id='aptly-review-toggle';toggle.setAttribute('aria-controls','aptly-review-panel');toggle.setAttribute('aria-expanded','true');document.body.append(toggle);
+ const panel=make('aside');panel.id='aptly-review-panel';panel.setAttribute('aria-label','Website review');
+ const header=make('header'),close=button('Close',()=>{panel.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.focus()});header.append(make('h2','Website review'),close);panel.append(header);
+ panel.append(make('p','Review the finished website and save your feedback as a draft. When you are ready, submit once for Aptly to verify.'));
+ const status=make('p','Opening your private review…');status.className='review-status';status.setAttribute('role','status');panel.append(status);
+ const retry=button('Refresh review',()=>void load());panel.append(retry);const body=make('div');panel.append(body);document.body.append(panel);
+ let state=null,busy=false,question='',itemId='',name='',outcome='changes_requested',confirmed=false,lastRequest=null,feedbackId=null;
+ const normal=path=>path.replace(/\.html$/,'').replace(/\/$/,'')||'/';
+ async function api(path,payload){const r=await fetch(API+'/'+path,{method:payload?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:payload?{'Content-Type':'application/json'}:undefined,body:payload?JSON.stringify(payload):undefined});let result;try{result=await r.json()}catch{throw Error('Private review is not available yet. Please contact Aptly.')}if(!r.ok)throw Error(result.error||'Unable to save. Your text is still here.');return result}
+ function message(){status.textContent=state?.submission?'Submitted — pending Aptly verification. This review is now read-only.':'Draft saved. Your feedback has not been submitted yet.'}
+ async function load(){if(busy)return;busy=true;retry.disabled=true;try{state=await api('state');message();render()}catch(e){status.textContent=e.message}finally{busy=false;retry.disabled=false;render()}}
+ function requestKey(payload){const signature=JSON.stringify(payload);if(lastRequest?.signature!==signature)lastRequest={signature,key:crypto.randomUUID()};return lastRequest.key}
+ async function mutate(route,payload,after){if(busy||!state||state.submission)return;busy=true;retry.disabled=true;render();try{const value={version:state.version.hash,revision:state.revision,...payload};state=await api(route,{...value,key:requestKey(value)});lastRequest=null;after?.();message()}catch(e){status.textContent=e.message+' Refresh to check the latest saved state before retrying.'}finally{busy=false;retry.disabled=false;render()}}
+ function saveDraft(draft,after){return mutate('draft',{draft},after)}
+ function render(){const active=document.activeElement,focus=body.contains(active)?active.id:'',cursor=active.selectionStart;body.replaceChildren();if(!state)return;
+  const locked=!!state.submission,plan=state.version,checks=state.draft.checks;
+  body.append(make('h3',plan.label),make('p',checks.length+' of '+plan.checklist.length+' items reviewed'));
+  if(locked){const receipt=make('section');receipt.append(make('h3','Pending Aptly verification'),make('p','Your submission was received. Aptly will verify it with you before treating it as an approval or taking launch action.'),make('p','Reference: '+state.submission.id),make('p','Submitted name (not yet verified): '+state.submission.claimedName),make('p','Requested outcome: '+(state.submission.outcome==='changes_requested'?'Changes requested':'Ready for Aptly verification')));body.append(receipt)}
+  const here=item=>item.links.some(link=>normal(new URL(link.url).pathname)===normal(location.pathname));
+  for(const item of [...plan.checklist].sort((a,b)=>Number(here(b))-Number(here(a)))){
+   const section=make('section');if(here(item))section.append(make('small','ON THIS PAGE'));section.append(make('h3',item.title));const details=make('details');details.open=here(item);details.append(make('summary','What to check'));const list=make('ul');for(const text of item.instructions)list.append(make('li',text));details.append(list);section.append(details);
+   for(const link of item.links){let url;try{url=new URL(link.url)}catch{continue}if(url.origin!==location.origin)continue;url.searchParams.set('privateReview','1');const a=make('a',link.label+' →');a.href=url.href;section.append(a)}
+   const label=make('label'),check=make('input');check.type='checkbox';check.checked=checks.includes(item.id);check.disabled=busy||locked;check.setAttribute('aria-label','Reviewed: '+item.title);check.addEventListener('change',()=>{const next=check.checked?[...checks,item.id]:checks.filter(id=>id!==item.id);void saveDraft({...state.draft,checks:next})});label.append(check,document.createTextNode('Reviewed (include any issues below)'));section.append(label);
+   if(!locked)section.append(button('Add feedback',()=>{itemId=item.id;render();document.getElementById('private-review-question').focus()}));body.append(section);
+  }
+  const feedback=make('section');feedback.append(make('h3',locked?'Submitted feedback':'Draft feedback'));
+  if(!state.draft.feedback.length)feedback.append(make('p','No feedback added.'));
+  for(const f of state.draft.feedback){const entry=make('div');entry.append(make('strong',plan.checklist.find(x=>x.id===f.itemId)?.title||'Website review'),make('p',f.text));if(!locked){const remove=button('Remove draft feedback',()=>void saveDraft({...state.draft,feedback:state.draft.feedback.filter(x=>x.id!==f.id)}));remove.disabled=busy;entry.append(remove)}feedback.append(entry)}body.append(feedback);
+  if(!locked){
+   const form=make('form'),topicLabel=make('label','Checklist item'),select=make('select');select.id='private-review-item';for(const item of plan.checklist){const option=make('option',item.title);option.value=item.id;select.append(option)}if(!itemId)itemId=plan.checklist[0].id;select.value=itemId;select.addEventListener('change',()=>itemId=select.value);topicLabel.append(select);
+   const detailLabel=make('label','Feedback'),text=make('textarea');text.id='private-review-question';text.rows=4;text.maxLength=4000;text.required=true;text.value=question;text.addEventListener('input',()=>question=text.value);detailLabel.append(text);const save=make('button',busy?'Saving…':'Save draft feedback');save.type='submit';save.disabled=busy;form.append(topicLabel,detailLabel,save);form.addEventListener('submit',e=>{e.preventDefault();void saveDraft({...state.draft,feedback:[...state.draft.feedback,{id:feedbackId||(feedbackId=crypto.randomUUID()),itemId,text:question}]},()=>{question='';feedbackId=null})});body.append(form);
+   const final=make('form');final.append(make('h3','Submit your review once'),make('p','After submission, this review is locked. Your name and link access are not identity verification. Aptly will verify the submission with you. This does not launch the website.'));
+   const nameLabel=make('label','Your name'),nameInput=make('input');nameInput.id='private-review-name';nameInput.value=name;nameInput.required=true;nameInput.maxLength=100;nameInput.addEventListener('input',()=>name=nameInput.value);nameLabel.append(nameInput);
+   const outcomeLabel=make('label','Review outcome'),choice=make('select');choice.id='private-review-outcome';for(const [value,text] of [['changes_requested','I have requested changes'],['ready_for_verification','Ready for Aptly to verify with me']]){const option=make('option',text);option.value=value;choice.append(option)}choice.value=outcome;choice.addEventListener('change',()=>outcome=choice.value);outcomeLabel.append(choice);
+   const confirmation=make('label'),check=make('input');check.type='checkbox';check.checked=confirmed;check.required=true;check.addEventListener('change',()=>confirmed=check.checked);confirmation.append(check,document.createTextNode('I understand this submits the saved draft once and locks it for Aptly verification.'));
+   const submit=make('button',busy?'Saving…':'Submit review for verification');submit.type='submit';submit.disabled=busy||checks.length!==plan.checklist.length;final.append(nameLabel,outcomeLabel,confirmation,submit);if(checks.length!==plan.checklist.length)final.append(make('p','Review every checklist item first. You can still request changes.'));final.addEventListener('submit',e=>{e.preventDefault();if(question.trim()){status.textContent='Save or clear the feedback you are typing before submitting.';return}void mutate('submit',{name,outcome,confirmed})});body.append(final);
+  }
+  if(focus){const next=document.getElementById(focus);next?.focus({preventScroll:true});if(typeof cursor==='number'&&next?.setSelectionRange)next.setSelectionRange(cursor,cursor)}
+ }
+ window.addEventListener('beforeunload',e=>{if(busy||question.trim()){e.preventDefault();e.returnValue=''}});
+ panel.addEventListener('keydown',e=>{if(e.key==='Escape'){panel.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.focus()}});
+ async function start(){try{if(linkToken){const token=linkToken;linkToken=null;await api('exchange',{token})}await load()}catch(e){status.textContent=e.message}}
+ void start();
+})();

@@ -1,5 +1,8 @@
 /* Opt-in reviewer UI. No credentials or customer review data are stored here. */
 (()=>{'use strict';
+ // Private-link mode is staged separately; its API fails closed until enabled.
+ let privateMode=new URLSearchParams(location.search).get('privateReview')==='1'||new URLSearchParams(location.hash.slice(1)).has('review_token');try{privateMode=privateMode||sessionStorage.getItem('aptly-private-review-mode')==='1'}catch{}
+ if(privateMode){const script=document.createElement('script');script.src='/website-review-link.js';document.head.append(script);return}
  const STUDIO='https://website-studio-unified.getaptly-8093.chatgpt.site',PROJECT='bba20e4a0ca94001b417e8e4ba05a773';
  const params=new URLSearchParams(location.search);let enabled=params.get('studioReview')==='1';try{enabled=enabled||sessionStorage.getItem('aptly-review-mode')==='1';if(enabled)sessionStorage.setItem('aptly-review-mode','1')}catch{}
  if(!enabled)return;
