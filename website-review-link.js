@@ -18,7 +18,7 @@
  const normal=path=>path.replace(/\.html$/,'').replace(/\/$/,'')||'/';
  async function api(path,payload){const r=await fetch(API+'/'+path,{method:payload?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:payload?{'Content-Type':'application/json'}:undefined,body:payload?JSON.stringify(payload):undefined});let result;try{result=await r.json()}catch{throw Error('Private review is not available yet. Please contact Aptly.')}if(!r.ok)throw Error(result.error||'Unable to save. Your text is still here.');return result}
  function message(){status.textContent=state?.submission?'Submitted — pending Aptly verification. This review is now read-only.':'Draft saved. Your feedback has not been submitted yet.'}
- async function load(){if(busy)return;busy=true;retry.disabled=true;try{state=await api('state');message();render()}catch(e){status.textContent=e.message}finally{busy=false;retry.disabled=false;render()}}
+ async function load(){if(busy)return;busy=true;retry.disabled=true;try{if(linkToken){await api('exchange',{token:linkToken});linkToken=null}state=await api('state');message();render()}catch(e){status.textContent=e.message}finally{busy=false;retry.disabled=false;render()}}
  function requestKey(payload){const signature=JSON.stringify(payload);if(lastRequest?.signature!==signature)lastRequest={signature,key:crypto.randomUUID()};return lastRequest.key}
  async function mutate(route,payload,after){if(busy||!state||state.submission)return;busy=true;retry.disabled=true;render();try{const value={version:state.version.hash,revision:state.revision,...payload};state=await api(route,{...value,key:requestKey(value)});lastRequest=null;after?.();message()}catch(e){status.textContent=e.message+' Refresh to check the latest saved state before retrying.'}finally{busy=false;retry.disabled=false;render()}}
  function saveDraft(draft,after){return mutate('draft',{draft},after)}
@@ -49,6 +49,5 @@
  }
  window.addEventListener('beforeunload',e=>{if(busy||question.trim()){e.preventDefault();e.returnValue=''}});
  panel.addEventListener('keydown',e=>{if(e.key==='Escape'){panel.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.focus()}});
- async function start(){try{if(linkToken){const token=linkToken;linkToken=null;await api('exchange',{token})}await load()}catch(e){status.textContent=e.message}}
- void start();
+ void load();
 })();

@@ -23,7 +23,8 @@ export async function onRequest({request,env}){
   body=new Uint8Array(size);let offset=0;for(const chunk of chunks){body.set(chunk,offset);offset+=chunk.length}headers.set('Content-Type','application/json');
  }
  try{
-  const upstream=await fetch(STUDIO+url.pathname,{method:request.method,headers,body,redirect:'manual',signal:AbortSignal.timeout(15000)});
+  let upstream;
+  for(let attempt=0;attempt<2;attempt++){try{upstream=await fetch(STUDIO+url.pathname,{method:request.method,headers,body,redirect:'manual',signal:AbortSignal.timeout(15000)});break}catch(error){if(attempt===1)throw error}}
   if(upstream.status>=300&&upstream.status<400||!upstream.headers.get('Content-Type')?.includes('application/json'))return fail('Website Studio review connection is unavailable.',503);
   const resultHeaders=new Headers({'Content-Type':'application/json','Cache-Control':'private, no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff'});
   // Hosting may append its own cookie. Forward only the exact review cookie;
