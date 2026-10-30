@@ -26,8 +26,10 @@ export async function onRequest({request,env}){
   const upstream=await fetch(STUDIO+url.pathname,{method:request.method,headers,body,redirect:'manual',signal:AbortSignal.timeout(15000)});
   if(upstream.status>=300&&upstream.status<400||!upstream.headers.get('Content-Type')?.includes('application/json'))return fail('Website Studio review connection is unavailable.',503);
   const resultHeaders=new Headers({'Content-Type':'application/json','Cache-Control':'private, no-store','Referrer-Policy':'no-referrer','X-Content-Type-Options':'nosniff'});
-  const session=upstream.headers.get('Set-Cookie');
-  if(session&&/^__Host-aptly_review=[a-f0-9]{64}; Path=\/; Secure; HttpOnly; SameSite=Strict; Max-Age=\d+$/.test(session))resultHeaders.set('Set-Cookie',session);
+  // Hosting may append its own cookie. Forward only the exact review cookie;
+  // never forward or combine Studio/platform authentication cookies.
+  const cookies=typeof upstream.headers.getSetCookie==='function'?upstream.headers.getSetCookie():[upstream.headers.get('Set-Cookie')||''];
+  for(const value of cookies){const match=value.match(/(?:^|,\s*)(__Host-aptly_review=[a-f0-9]{64}; Path=\/; Secure; HttpOnly; SameSite=Strict; Max-Age=\d+)(?=,|$)/);if(match){resultHeaders.set('Set-Cookie',match[1]);break}}
   return new Response(upstream.body,{status:upstream.status,headers:resultHeaders});
  }catch{return fail('Website Studio is temporarily unavailable. Keep your text and retry.',503)}
 }
