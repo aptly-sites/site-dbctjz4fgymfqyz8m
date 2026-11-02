@@ -17,3 +17,34 @@ html.aptly-private-review-open,html.aptly-private-review-open body{overflow:hidd
 @media(max-width:480px){#aptly-review-panel{width:100%;padding:16px;padding-bottom:calc(32px + env(safe-area-inset-bottom,0px))}#aptly-review-panel header{top:-16px;margin:-16px -16px 0;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 12px}#aptly-review-panel h2{font-size:20px}#aptly-review-panel header button{max-width:135px}}
 
 #aptly-review-panel .review-card{border:1px solid #dce1ec;border-radius:12px;margin:14px 0;background:#fff;overflow:hidden;box-shadow:0 2px 8px #17253b08}#aptly-review-panel .review-card>summary{padding:16px;min-height:64px;list-style-position:inside}#aptly-review-panel .review-card>summary span{font-size:16px}#aptly-review-panel .review-card>summary small{display:block;margin-top:6px;font-weight:400}#aptly-review-panel .review-card[open]>summary{border-bottom:1px solid #dce1ec;background:#f7f8ff}#aptly-review-panel .review-card.is-reviewed{background:#f6f8fa}#aptly-review-panel .review-card-content{padding:16px}#aptly-review-panel .review-card-content>strong{display:block;margin-top:8px}
+
+/* Checklist rows: the circle saves review state; the text expands details. */
+#aptly-review-panel .review-card>summary{display:flex;align-items:center;gap:12px;list-style:none;padding:12px;cursor:pointer}
+#aptly-review-panel .review-card>summary::-webkit-details-marker{display:none}
+#aptly-review-panel .review-card>summary::marker{content:""}
+#aptly-review-panel .review-row-text{display:block;flex:1;min-width:0;overflow-wrap:anywhere}
+#aptly-review-panel .review-card>summary .review-row-text>span{font-size:15px;line-height:1.45}
+#aptly-review-panel .review-card>summary small{font-size:13px;color:#5544a5;margin-top:4px}
+#aptly-review-panel .review-card>summary .review-row-check{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;min-height:44px;margin:0;cursor:pointer}
+#aptly-review-panel .review-row-check input[type=checkbox]{appearance:none;-webkit-appearance:none;display:grid;place-content:center;flex:0 0 26px;width:26px;height:26px;border:2px dotted #8b86a3;border-radius:50%;background:#fff;cursor:pointer}
+#aptly-review-panel .review-row-check input[type=checkbox]:checked{border:2px solid #168047;background:#edf9f1}
+#aptly-review-panel .review-row-check input[type=checkbox]:checked::after{content:"";width:6px;height:11px;border:solid #168047;border-width:0 3px 3px 0;transform:translateY(-1px) rotate(45deg)}
+#aptly-review-panel .review-row-check input[type=checkbox]:disabled{cursor:default;opacity:.65}
+@media(forced-colors:active){#aptly-review-panel .review-row-check input[type=checkbox]{appearance:auto;-webkit-appearance:auto}}
+
+#aptly-review-panel .review-status-quiet{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#aptly-review-panel section[hidden],#aptly-review-panel button[hidden]{display:none!important}
+#aptly-review-panel header h2{font-size:20px;line-height:1.25;max-width:260px}
+#aptly-review-panel .review-card.is-reviewed>summary small{color:#17683d}
+
+#aptly-review-panel .review-text-link{border:0;background:none;text-decoration:underline;padding:4px 0;font-weight:500;margin:0 16px 8px 0;color:#392abb}
+#aptly-review-panel header button{font-size:26px;line-height:1;width:44px;padding:0;background:transparent;border:0;color:#526582}
+/* Restrained spacing and white surfaces keep the review work easy to scan. */
+#aptly-review-panel{background:#f1f5f9;color:#1e293b}
+#aptly-review-panel header{background:#f1f5f9;border-bottom:1px solid #dbe4ee}
+#aptly-review-panel .review-card,#aptly-review-panel .review-card.is-reviewed{background:#fff;border-color:#dbe4ee;box-shadow:0 1px 2px #0f172a06;margin:10px 0}
+#aptly-review-panel .review-card[open]>summary{background:#fff;border-bottom-color:#e2e8f0}
+#aptly-review-panel .review-card>summary{padding:12px 14px;gap:10px}
+#aptly-review-panel .review-card-content{padding:16px 20px 20px}
+#aptly-review-panel form{border-top-color:#dbe4ee}
+#aptly-review-panel p{color:#475569}
