@@ -59,7 +59,7 @@
   function initMap() {
     if (map || !window.L || !L.markerClusterGroup) return;
     map = L.map('rental-map',{scrollWheelZoom:false}).setView([32.46,-84.94],12);
-    const layer = L.tileLayer(MAP_TILES,{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+    const layer = L.tileLayer(MAP_TILES,{maxZoom:19,referrerPolicy:'origin',attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
     let failed = false;
     layer.on('tileerror',()=>{failed=true;$('#map-note').textContent='Map tiles are unavailable. You can still browse every home in the list.';});
     layer.on('load',()=>{if (!failed) $('#map-note').textContent='';});
@@ -103,7 +103,7 @@
     const list=homes.filter(r=>selected.has(r._id)), dialog=$('#compare-dialog');
     $('#compare-content').innerHTML=`<div class="comparison-scroll"><table class="comparison-table"><thead><tr>${list.map(r=>`<th scope="col">${carousel(r)}<h3>${esc(title(r))}</h3><p>${esc(cityLine(r))}</p><a href="${esc(tour(r)||inquiry(r))}">${tour(r)?'Schedule tour':'Ask about a tour'}</a><div class="comparison-links"><button type="button" data-share="${esc(r._id)}">Share</button><a href="${local(r)}">View details</a></div></th>`).join('')}</tr></thead><tbody>${detailRows(list[0]).map(([label],i)=>`<tr>${list.map(r=>`<td><span>${esc(label)}</span>${esc(detailRows(r)[i][1])}</td>`).join('')}</tr>`).join('')}<tr>${list.map(r=>`<td><span>Amenities</span>${esc((r.unitAmenities||[]).join(', ')||'Contact Turman for amenity details.')}</td>`).join('')}</tr><tr>${list.map((r,i)=>`<td><span>Location</span><div id="compare-map-${i}" class="compare-map">${coords(r)?'':'Map location unavailable'}</div><p>${esc(r.address?.formattedAddress||cityLine(r))}</p></td>`).join('')}</tr></tbody></table></div>`;
     $('#compare-feedback').textContent='';dialog.showModal();
-    if(window.L)list.forEach((r,i)=>{if(!coords(r))return;const m=L.map('compare-map-'+i,{scrollWheelZoom:false}).setView(coords(r),14);L.tileLayer(MAP_TILES,{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);L.circleMarker(coords(r),{color:'#9a2b18',fillOpacity:1,radius:7}).addTo(m);compareMaps.push(m);});
+    if(window.L)list.forEach((r,i)=>{if(!coords(r))return;const m=L.map('compare-map-'+i,{scrollWheelZoom:false}).setView(coords(r),14);L.tileLayer(MAP_TILES,{maxZoom:19,referrerPolicy:'origin',attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);L.circleMarker(coords(r),{color:'#9a2b18',fillOpacity:1,radius:7}).addTo(m);compareMaps.push(m);});
   }
   async function share(button,id) {
     const r=homes.find(r=>r._id===id);if(!r)return;
